@@ -1,0 +1,43 @@
+{
+  "id": "af681b8d-beb5-4d8f-b66a-5980d979c1c9",
+  "name": "GitHub Projects",
+  "publisher": "Bluace BV",
+  "version": "1.24.0.0",
+  "brief": "He hallo hoe gaat het er mee.",
+  "description": "He hallo hoe gaat het er mee",
+  "privacyStatement": "https://bluace.nl/privacy-disclaimer/",
+  "EULA": "https://www.bluace.nl",
+  "help": "https://www.bluace.nl/en/support/",
+  "contextSensitiveHelpUrl": "https://www.bluace.nl/en/support/",
+  "url": "https://www.bluace.nl",
+  "logo": "",
+  "dependencies": [    
+  ],
+  "internalsVisibleTo": [    
+    {
+      "id": "1bf2cd3e-b474-420e-a868-6f39f18c96e3",
+      "name": "Bluace Library",
+      "publisher": "Bluace BV"
+    }
+  ],
+  "screenshots": [],
+  "platform": "28.0.0.0",
+  "application": "28.0.0.0",
+  "idRanges": [
+    {
+      "from": 70861875,
+      "to": 70861974
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": false,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "features": [
+    "TranslationFile",
+    "NoPromotedActionProperties",
+    "NoImplicitWith"
+  ],
+  "runtime": "17.0"
+}

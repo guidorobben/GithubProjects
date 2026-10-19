@@ -1,0 +1,24 @@
+{
+    "editor.suggestSelection": "first",
+    "al.enableCodeAnalysis": true,
+    "al.codeAnalyzers": [
+        "${CodeCop}",
+        "${UICop}",
+        "${AppSourceCop}",
+        "${analyzerFolder}ALCops.ApplicationCop.dll",
+        "${analyzerFolder}ALCops.Common.dll",
+        "${analyzerFolder}ALCops.DocumentationCop.dll",
+        "${analyzerFolder}ALCops.FormattingCop.dll",
+        "${analyzerFolder}ALCops.LinterCop.dll",
+        "${analyzerFolder}ALCops.PlatformCop.dll"
+    ],
+    "al.enableExternalRulesets": true,
+    "al.ruleSetPath": "https://babuildfileshare.blob.core.windows.net/al-go/bluace-ruleset.json?sp=r&st=2024-02-14T09:30:20Z&se=2999-03-05T22:59:59Z&spr=https&sv=2022-11-02&sr=b&sig=%2B5tUBTkoBZZho6UvowBKhPGsEdeVIfs50EzWogZeEhs%3D", 
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.RenameWithGit": true,
+    "CRS.ObjectNameSuffix": "GHP",
+    "CRS.RemoveSuffixFromFilename": true,
+    "CRS.AlSubFolderName": "src"
+}
