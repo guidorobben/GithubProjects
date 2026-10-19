@@ -1,0 +1,5 @@
+[submodule "external/BCApps"]
+	path = external/BCApps
+	url = https://github.com/microsoft/BCApps
+	branch = main
+	shallow = true

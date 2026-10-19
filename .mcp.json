@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "bc-knowledge": {
+      "command": "npx",
+      "args": [
+        "bc-code-intelligence-mcp"
+      ]
+    },
+    "al": {
+      "command": "al",
+      "args": [
+        "launchmcpserver",
+        "--transport",
+        "stdio"
+      ]
+    },
+    "microsoft-learn": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    }
+  }
+}
