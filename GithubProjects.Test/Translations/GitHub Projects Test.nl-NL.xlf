@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="nl-NL" original="GitHub Projects Test">
+    <body>
+      <group id="body">
+        <trans-unit id="Codeunit 317446772 - NamedType 980193651" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The URL %1 is already used by base URL %2.</source><target state="translated">De URL %1 wordt al gebruikt door basis-URL %2.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL GHP - NamedType DuplicateUrlErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 317446772 - NamedType 411220975" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The URL %1 must start with https://.</source><target state="translated">De URL %1 moet beginnen met https://.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = URL</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL GHP - NamedType UrlMustBeHttpsErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1265272608 - NamedType 1234059480" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You do not have permission to change the token of base URL %1.</source><target state="translated">U hebt geen machtiging om de token van basis-URL %1 te wijzigen.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL Perm. GHP - NamedType NoTokenPermissionErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2657089541 - NamedType 1668535664" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to clear the token of base URL %1?</source><target state="translated">Wilt u de token van basis-URL %1 wissen?</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL Token GHP - NamedType ClearTokenQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2657089541 - NamedType 542292908" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Save the base URL before you set its token.</source><target state="translated">Sla de basis-URL op voordat u de token instelt.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL Token GHP - NamedType SaveBaseUrlFirstErr</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 1174803041 - Property 2879900210" maxwidth="30" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub Projects - Test</source><target state="translated">GitHub Projects - Test</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet Projects Test GHP - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
