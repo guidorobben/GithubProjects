@@ -5,11 +5,12 @@ How the local Business Central container is set up for this repo, and how to bui
 ## Rule 1: The local container
 
 ### Intent
-The local development container is created with `.AL-Go/Bluace-DevEnv.ps1`, which calls AL-Go's `localDevEnv.ps1`.
+GithubProjects uses the existing container `tm2023w2v2-nl` (launch configuration "tm2023w2v2-nl" in `GithubProjects/.vscode/launch.json`).
 
-- Container `pteaqc`, BC 29 NL sandbox artifact, authentication `UserPassword`.
-- Development endpoint: server `http://pteaqc`, instance `BC`, port `7049`, tenant `default`, company `CRONUS NL`.
-- The container setup compiles and publishes all apps in `appFolders` and `testFolders` of `.AL-Go/settings.json`.
+- Despite its name, the container runs BC 28.5 NL: Application 28.5.54151.54910 and System 28.0.54846.0 (verified 2026-10-20 by downloading symbols from it). These match `GithubProjects/.alpackages` and the app's `application` 28.0.
+- Development endpoint: server `http://tm2023w2v2-nl`, instance `BC`, port `7049`, tenant `default`, authentication `UserPassword`, `environmentType: OnPrem`. The company is not fixed in launch.json; pass it explicitly where a tool needs it.
+- Symbols can be downloaded from `http://tm2023w2v2-nl:7049/BC/dev/packages?publisher=Microsoft&appName=<app>&versionText=28.0.0.0&tenant=default` with basic authentication.
+- The repo has no AL-Go setup yet. The Bluace convention for a dedicated container is `.AL-Go/Bluace-DevEnv.ps1`, which calls AL-Go's `localDevEnv.ps1` and compiles and publishes all apps in `appFolders` and `testFolders` of `.AL-Go/settings.json`.
 
 ## Rule 2: Test libraries come from AL-Go settings, not from container flags
 
@@ -29,8 +30,8 @@ The AL MCP server authenticates with `UserPassword` only through the environment
 ## Rule 4: Building and publishing with the AL MCP tools
 
 ### Intent
-- Add every project with `al_addproject` (Mollie Integration, AquaCell, Mollie Integration.Test).
+- Add every project with `al_addproject` (GithubProjects, GithubProjects.Test).
 - Build and publish one project at a time; `al_build` with `scope: all` only builds the first project.
-- Publish in dependency order: Mollie Integration → AquaCell → Mollie Integration.Test.
-- `al_publish` parameters for the container: `serverUrl: http://pteaqc`, `serverInstance: BC`, `port: 7049`, `authentication: UserPassword`, `environmentType: OnPrem`. To publish a package built with `alc.exe` (see `bluace-compile.md`), pass `appPath` with `skipBuild: true`.
+- Publish in dependency order: GithubProjects → GithubProjects.Test.
+- `al_publish` parameters for the container: the development endpoint from Rule 1, with `authentication: UserPassword` and `environmentType: OnPrem`. To publish a package built with `alc.exe` (see `bluace-compile.md`), pass `appPath` with `skipBuild: true`.
 - A dependent project needs the current symbols of its dependency: copy the freshly built `.app` into the dependent project's `.alpackages`, or download symbols from the container.

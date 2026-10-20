@@ -10,7 +10,7 @@
   "help": "https://www.bluace.nl/en/support/",
   "contextSensitiveHelpUrl": "https://www.bluace.nl/en/support/",
   "url": "https://www.bluace.nl",
-  "logo": "",
+   "logo": "./resources/logo.jpg",
   "dependencies": [    
   ],
   "internalsVisibleTo": [    

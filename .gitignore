@@ -1,0 +1,8 @@
+# Local Claude Code settings (contain the BC login)
+**/.claude/settings.local.json
+
+# AL build output and downloaded symbols
+*.app
+**/.alpackages/
+**/.snapshots/
+**/.vscode/rad.json

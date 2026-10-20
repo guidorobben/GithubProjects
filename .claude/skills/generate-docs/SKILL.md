@@ -9,13 +9,13 @@ disable-model-invocation: true
 
 # Generate user documentation for a feature
 
-Produces or extends `docs/user-guide.md`, a living guide for AquaCell users and administrators
+Produces or extends `docs/user-guide.md`, a living guide for GithubProjects users and administrators
 that grows with every feature. The reader is a Business Central user, not a developer.
 
 This skill assumes the session runs from the workspace (`al.code-workspace`). Locate the repo root
 through `specs/brief.md`. All paths below are relative to the repo root.
 
-Argument (optional): the feature folder name, e.g. `2026-10-05-mollie-payment-link-management`.
+Argument (optional): the feature folder name, e.g. `2026-10-20-github-repositories-issues`.
 Without it, derive it from the current branch `spec/YYYY-MM-DD-feature-name`.
 
 ## Step 1 - Read the inputs
@@ -71,11 +71,11 @@ not verify in code as inferred, and leave it out of the guide unless the user co
 When creating the file:
 
 ```markdown
-# AquaCell Business Central – User Guide
+# GithubProjects Business Central – User Guide
 
 ## About this extension
 
-<2-3 sentences, plain language: which AquaCell extensions this guide covers and which problems
+<2-3 sentences, plain language: which GithubProjects features this guide covers and which problems
 they solve. Mention every feature that is done, also those without a section yet.>
 
 ## Table of contents
@@ -202,14 +202,14 @@ Mistakes that earlier reviews caught, check for them explicitly:
 - After writing, normalise new or edited Markdown files to CRLF without BOM, for example:
 
 ```powershell
-$f = 'C:\Repositories\pteaquacell\docs\user-guide.md'
+$f = 'C:\Repository\GithubProjects\docs\user-guide.md'
 $t = [IO.File]::ReadAllText($f)
 [IO.File]::WriteAllText($f, ($t -replace "`r?`n", "`r`n"), (New-Object Text.UTF8Encoding($false)))
 ```
 
 ## Step 8 - Report
 
-Start the hand-over with one line naming the audience (e.g. "Written for: AquaCell users and
+Start the hand-over with one line naming the audience (e.g. "Written for: GithubProjects users and
 administrators who work in Business Central."). Summarise what was added, which review findings
 were applied, anything left open, and which statements are inferred. Do not commit; leave that to
 the user.

@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".claude"
+		},
+		{
+			"path": "external/BCApps"
+		},
+		{
+			"path": "specs"
+		},
+		{
+			"path": "GitHubProjects"
+		},
+				{
+			"path": "GitHubProjects.Test"
+		}
+
+	],
+	"settings": {}
+}
