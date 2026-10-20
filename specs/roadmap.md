@@ -9,7 +9,7 @@ Every feature follows the SDD loop (Spec → Implement → Validate → Docs →
 ## 1. Base URLs and tokens
 
 - **Delivers:** the user can register GitHub and Azure DevOps base URLs, each with its own secret token.
-- **Status:** planned
+- **Status:** done ([spec](2026-10-20-base-urls-and-tokens/requirements.md))
 - **How:** one record per base URL with a source type; the token goes to company-scoped Isolated Storage through the standard password dialog after a write-permission check, and is wiped after an environment copy — [tech design §1](tech-design.md#1-settings-multiple-base-urls), decisions 1, 2, 16, 17.
 - **Done when:** a user with write permission can set and clear a token, nobody can read it back, a duplicate URL is refused, and a copied environment has no tokens.
 
@@ -17,8 +17,8 @@ Every feature follows the SDD loop (Spec → Implement → Validate → Docs →
 
 - **Delivers:** the user maintains GitHub owners and retrieves their repositories, including the token user's private ones, on demand.
 - **Status:** planned
-- **How:** the app's own HTTP handler and a GitHub client that follows `link` paging and recognises rate limits; each owner is fetched completely, then upserted and pruned in its own isolated unit of work — [tech design §2](tech-design.md#2-owners-github-only), [§7](tech-design.md#7-data-retrieval-with-the-rest-client), [§8](tech-design.md#8-repeated-retrieval-upsert-and-removal), decisions 4, 5, 9, 10, 18, 19.
-- **Done when:** repeated updates of user and organization owners give no duplicates, remove repositories no longer returned, leave data untouched after a failed request, and HTTP works in a sandbox with requests allowed on this app only.
+- **How:** the app's own HTTP handler and a GitHub client that follows `link` paging and recognises rate limits; each owner is fetched completely, then upserted and pruned in its own isolated unit of work; deleting a base URL now cascades to its owners and repositories, and its Source Type is locked once owners exist (both moved here from feature 1) — [tech design §1](tech-design.md#1-settings-multiple-base-urls), [§2](tech-design.md#2-owners-github-only), [§7](tech-design.md#7-data-retrieval-with-the-rest-client), [§8](tech-design.md#8-repeated-retrieval-upsert-and-removal), decisions 4, 5, 9, 10, 18, 19.
+- **Done when:** repeated updates of user and organization owners give no duplicates, remove repositories no longer returned, leave data untouched after a failed request, deleting a base URL removes its owners and repositories, the Source Type of a base URL with owners cannot change, and HTTP works in a sandbox with requests allowed on this app only.
 
 ## 3. GitHub issues
 
@@ -31,8 +31,8 @@ Every feature follows the SDD loop (Spec → Implement → Validate → Docs →
 
 - **Delivers:** the user retrieves all Azure DevOps projects the token can access, on demand from the base URL list.
 - **Status:** planned
-- **How:** an Azure DevOps client with basic authentication on the same HTTP handler, paging projects until an empty page, reusing the upsert-and-prune unit of work from feature 2 — [tech design §3](tech-design.md#3-repositories-and-projects), [§7](tech-design.md#7-data-retrieval-with-the-rest-client), decisions 3, 20.
-- **Done when:** projects appear next to GitHub repositories, a base URL without a token fails with a clear message, and removed projects disappear on the next update.
+- **How:** an Azure DevOps client with basic authentication on the same HTTP handler, paging projects until an empty page, reusing the upsert-and-prune unit of work from feature 2; the Source Type of a base URL is locked once projects exist (moved here from feature 1) — [tech design §1](tech-design.md#1-settings-multiple-base-urls), [§3](tech-design.md#3-repositories-and-projects), [§7](tech-design.md#7-data-retrieval-with-the-rest-client), decisions 3, 20.
+- **Done when:** projects appear next to GitHub repositories, a base URL without a token fails with a clear message, removed projects disappear on the next update, and the Source Type of a base URL with projects cannot change.
 
 ## 5. Azure DevOps user stories and tasks
 

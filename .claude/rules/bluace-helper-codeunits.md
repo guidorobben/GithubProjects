@@ -78,7 +78,7 @@ end;
 ## Rule 3: Suffix on table and page extension members
 
 ### Intent
-Procedures and global variables in table extensions and page extensions carry the app suffix ("MPTE" in Mollie Integration, "PTE" in AquaCell), so they cannot collide with members of other extensions of the same base object. The app's own tables do not need suffixed members.
+Procedures and global variables in table extensions and page extensions carry the app suffix ("GHP" in GithubProjects; the examples below use "MPTE" from Mollie Integration), so they cannot collide with members of other extensions of the same base object. The app's own tables do not need suffixed members.
 
 How field changes of an extended table are handled is described in `bluace-table-triggers.md`; how records are written in `bluace-run-trigger.md`.
 

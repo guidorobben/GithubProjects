@@ -10,13 +10,13 @@
   "help": "https://www.bluace.nl/en/support/",
   "contextSensitiveHelpUrl": "https://www.bluace.nl/en/support/",
   "url": "https://www.bluace.nl",
-  "logo": "",
+   "logo": "./resources/logo.jpg",
   "dependencies": [    
   ],
   "internalsVisibleTo": [    
     {
-      "id": "1bf2cd3e-b474-420e-a868-6f39f18c96e3",
-      "name": "Bluace Library",
+      "id": "07603d66-88b2-4335-9afc-67cf7c33776a",
+      "name": "GitHub Projects Test",
       "publisher": "Bluace BV"
     }
   ],
@@ -25,8 +25,8 @@
   "application": "28.0.0.0",
   "idRanges": [
     {
-      "from": 70861875,
-      "to": 70861974
+      "from": 80000,
+      "to": 80099
     }
   ],
   "resourceExposurePolicy": {

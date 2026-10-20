@@ -124,7 +124,7 @@ All of these are outward-facing or hard to undo: ask the user before each one.
 - Normalise new or edited Markdown files to CRLF without BOM, for example:
 
 ```powershell
-$f = 'C:\Repositories\pteaquacell\CHANGELOG.md'
+$f = 'C:\Repositories\GithubProjects\CHANGELOG.md'
 $t = [IO.File]::ReadAllText($f)
 [IO.File]::WriteAllText($f, ($t -replace "`r?`n", "`r`n"), (New-Object Text.UTF8Encoding($false)))
 ```

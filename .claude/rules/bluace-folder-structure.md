@@ -71,7 +71,7 @@ Naming:
 
 ```
 // Good example
-AquaCell/src/
+GithubProjects/src/
 └── Reports/
     ├── SalesInvoice.ReportExt.al
     ├── SalesInvoice.ReportExt.rdlc

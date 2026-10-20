@@ -7,6 +7,7 @@ Supplements `al-testing.md` with what applies to the test apps in this repo.
 ### Intent
 - Run tests with `al_run_tests` per test codeunit, with `projectPath` (the test app folder, so its `launch.json` is used) and `company: "CRONUS NL"`. Without them the runner gets a 401.
 - The AL MCP test runner cannot run tests that use TestPages. Put TestPage scenarios in a separate UI test codeunit; they run in the AL-Go pipeline.
+- The AL MCP test runner does not fail a test on an unhandled dialog (verified 2026-10-20 in GithubProjects: a test without a ConfirmHandler passed there and failed in the AL Test Tool with "Unhandled UI: Confirm"). A pass in the MCP runner does not prove that no dialog opened: confirm scenarios that check "no dialog" or rely on handlers in the AL Test Tool or the AL-Go pipeline.
 - Publish the app and the test app first (see `bluace-dev-environment.md`).
 
 ## Rule 2: No external communication in tests
@@ -71,6 +72,7 @@ The app is translated (en-US, nl-NL), so error texts depend on the language of t
 
 ### Intent
 Every codeunit with `Subtype = Test` has a name that starts with `UT `, followed by the feature or object it tests and the app suffix. Its file name starts with `UT` too (`<ObjectNameWithoutSuffix>.Codeunit.al`). This keeps test codeunits recognisable and sorted together.
+- Every UT codeunit sets `TestPermissions = Disabled;` right after `Subtype = Test;`. Permission scenarios lower permissions explicitly with "Permissions Mock" and "Library - Lower Permissions" (Rule 3).
 - Do not add "Tests" to the name; `UT` already says it.
 - Libraries, mocks and other helper codeunits of the test app are not test codeunits and keep their own names (e.g. "Library - Gen. Journal PTE", "Mock Http Handler MPTE").
 - Stay within the 30-character limit, abbreviating the middle part when needed.

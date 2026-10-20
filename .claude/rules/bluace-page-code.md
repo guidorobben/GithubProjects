@@ -68,7 +68,7 @@ end;
 ## Rule 2: Page extensions follow the same rule
 
 ### Intent
-Page extensions also call table extension procedures instead of containing code. Their own procedures and global variables carry the app suffix (`...MPTE` / `...PTE`). Prefer `RunObject` with `RunPageLink` for actions that only open another page.
+Page extensions also call table extension procedures instead of containing code. Their own procedures and global variables carry the app suffix (`...GHP` in GithubProjects; `...MPTE` in the Mollie Integration examples). Prefer `RunObject` with `RunPageLink` for actions that only open another page.
 
 ### Examples
 

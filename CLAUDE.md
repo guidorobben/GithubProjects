@@ -1,8 +1,8 @@
-# AquaCell Customizations - Project Rules
+# GithubProjects - Project Rules
 
 ## What this project is
 
-A Business Central AL extension for with all customizations necessary to implement the business processes at AquaCell. Read `specs/brief.md` for the full customer brief.
+GithubProjects: a Business Central AL extension that retrieves repositories and issues from GitHub, and user stories and tasks from Azure DevOps, and stores them in Business Central. Read `specs/brief.md` for the full brief.
 
 ## SDD process
 
@@ -25,4 +25,5 @@ This project uses Spec-Driven Development. Before implementing anything:
 - Other dependencies (e.g. Technical Management, Technical Management Integration) are not in BCApps; use symbols/.alpackages for those.
 
 ## AL coding standards
+- App suffix: `GHP` (`mandatoryAffixes` in `GithubProjects/AppSourceCop.json`). Every object name, and every member of a table or page extension, ends with ` GHP` / `GHP`.
 - See .claude/rules/ for detailed rules.

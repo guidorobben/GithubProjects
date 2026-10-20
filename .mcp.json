@@ -3,6 +3,7 @@
     "bc-knowledge": {
       "command": "npx",
       "args": [
+        "--prefer-offline",
         "bc-code-intelligence-mcp"
       ]
     },

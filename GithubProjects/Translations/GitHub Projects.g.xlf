@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="GitHub Projects">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 3566854179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base URL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3566854179 - Field 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the code that identifies the base URL.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 3566854179 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3566854179 - Field 1753214751 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the base URL belongs to GitHub or to Azure DevOps. It decides which API is called and how the token is sent.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field Source Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 3566854179 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field Source Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3566854179 - Field 3003898253 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the base URL of the API, for example https://api.github.com or https://dev.azure.com/{organization}. The URL must start with https://.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field URL - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 3566854179 - Field 3003898253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>URL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field URL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3678296145 - NamedType 1668535664" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to clear the token of base URL %1?</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType ClearTokenQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3678296145 - NamedType 980193651" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The URL %1 is already used by base URL %2.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType DuplicateUrlErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3678296145 - NamedType 1234059480" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You do not have permission to change the token of base URL %1.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType NoTokenPermissionErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3678296145 - NamedType 542292908" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Save the base URL before you set its token.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType SaveBaseUrlFirstErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3678296145 - NamedType 411220975" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The URL %1 must start with https://.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = URL</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType UrlMustBeHttpsErr</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base URLs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub Projects, Azure DevOps, token</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Control 1605921075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether a token is set for the base URL. The token itself is never shown. Without a token, a GitHub base URL only returns public data and is limited to 60 requests per hour. An Azure DevOps base URL requires a token.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Control TokenSet - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Control 1605921075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Token Set</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Control TokenSet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 1179226886 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the token of the selected base URL.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action ClearToken - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 1179226886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clear Token</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action ClearToken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 1272051387 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter the personal access token for the selected base URL. An existing token is replaced. The token cannot be read back.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action SetToken - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 1272051387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Token</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action SetToken - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 3383493608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action Category_Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3883573654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Source Type GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3883573654 - EnumValue 1867176622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Azure DevOps</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Source Type GHP - EnumValue Azure DevOps - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3883573654 - EnumValue 2033078343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Source Type GHP - EnumValue GitHub - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 1209323098 - Property 2879900210" maxwidth="30" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub Projects - Admin</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet Projects Admin GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 4076728612 - Property 2879900210" maxwidth="30" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub Projects - User</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet Projects User GHP - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
