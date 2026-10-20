@@ -36,6 +36,7 @@ codeunit 50009 "UT Repository Update GHP"
         Assert.AreEqual('org-a', Repository.Owner, UnexpectedValueTok);
         Assert.AreEqual(Repository."Source Type"::GitHub, Repository."Source Type", UnexpectedValueTok);
         Assert.AreEqual(Repository."Issue Sync"::Include, Repository."Issue Sync", UnexpectedValueTok);
+        Assert.IsFalse(Repository.Fork, UnexpectedValueTok);
         Repository.SetLoadFields(Name, "Issues Enabled");
         Repository.Get(BaseURL.Code, '102');
         Assert.AreEqual('repo-two', Repository.Name, UnexpectedValueTok);
@@ -212,6 +213,58 @@ codeunit 50009 "UT Repository Update GHP"
         Repository.Get(BaseURL.Code, '101');
         Assert.AreEqual('org-a', Repository.Owner, UnexpectedValueTok);
         Assert.AreEqual(Repository."Issue Sync"::Ignore, Repository."Issue Sync", UnexpectedValueTok);
+    end;
+
+    [Test]
+    [HandlerFunctions('UpdatedMessageHandler')]
+    procedure H1_NewForkIsIgnored()
+    var
+        BaseURL: Record "Base URL GHP";
+        Owner: Record "Owner GHP";
+        Repository: Record "Repository GHP";
+        MockHttpHandlerGHP: Codeunit "Mock Http Handler GHP";
+    begin
+        // [SCENARIO H1] A new repository that is a fork is inserted with Fork Yes and Issue Sync Ignore.
+        // [GIVEN] ORG returns fork 104 and R1
+        CreateOrgOwner(BaseURL, Owner);
+        MockHttpHandlerGHP.AddResponse(LibraryGitHubGHP.OrgReposUrl(BaseURL, 'org-a'), LibraryGitHubGHP.Page(LibraryGitHubGHP.ForkJson(104, 'repo-fork'), LibraryGitHubGHP.R1()));
+        BindSubscription(MockHttpHandlerGHP);
+
+        // [WHEN] ORG is updated
+        UpdateOwner(Owner);
+
+        // [THEN] 104 has Fork Yes and Issue Sync Ignore; 101 has Fork No and Issue Sync Include
+        Repository.Get(BaseURL.Code, '104');
+        Assert.IsTrue(Repository.Fork, UnexpectedValueTok);
+        Assert.AreEqual(Repository."Issue Sync"::Ignore, Repository."Issue Sync", UnexpectedValueTok);
+        Repository.Get(BaseURL.Code, '101');
+        Assert.IsFalse(Repository.Fork, UnexpectedValueTok);
+        Assert.AreEqual(Repository."Issue Sync"::Include, Repository."Issue Sync", UnexpectedValueTok);
+    end;
+
+    [Test]
+    [HandlerFunctions('UpdatedMessageHandler')]
+    procedure H2_StoredForkKeepsIssueSync()
+    var
+        BaseURL: Record "Base URL GHP";
+        Owner: Record "Owner GHP";
+        Repository: Record "Repository GHP";
+        MockHttpHandlerGHP: Codeunit "Mock Http Handler GHP";
+    begin
+        // [SCENARIO H2] A stored repository that GitHub returns as a fork gets Fork Yes and keeps its Issue Sync.
+        // [GIVEN] 104 stored with Fork No and Issue Sync Include; ORG returns 104 as a fork
+        CreateOrgOwner(BaseURL, Owner);
+        LibraryGitHubGHP.CreateRepository(Owner, '104', 'repo-fork');
+        MockHttpHandlerGHP.AddResponse(LibraryGitHubGHP.OrgReposUrl(BaseURL, 'org-a'), LibraryGitHubGHP.Page(LibraryGitHubGHP.ForkJson(104, 'repo-fork')));
+        BindSubscription(MockHttpHandlerGHP);
+
+        // [WHEN] ORG is updated
+        UpdateOwner(Owner);
+
+        // [THEN] Fork Yes; Issue Sync Include
+        Repository.Get(BaseURL.Code, '104');
+        Assert.IsTrue(Repository.Fork, UnexpectedValueTok);
+        Assert.AreEqual(Repository."Issue Sync"::Include, Repository."Issue Sync", UnexpectedValueTok);
     end;
 
     local procedure CreateOrgOwner(var BaseURL: Record "Base URL GHP"; var Owner: Record "Owner GHP")

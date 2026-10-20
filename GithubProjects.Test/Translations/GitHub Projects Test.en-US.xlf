@@ -38,6 +38,56 @@
           <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = HTTP status code, %3 = reason phrase</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT GitHub Requests GHP - NamedType RequestFailedErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2282953197 - NamedType 2497633261" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The URL %1 is the GitHub website. For github.com, use https://api.github.com.</source><target state="translated">The URL %1 is the GitHub website. For github.com, use https://api.github.com.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = URL</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT GitHub Website URL GHP - NamedType GitHubWebsiteErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3001701562 - NamedType 4097306343" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to delete the stored issues of %1 repository(ies)?</source><target state="translated">Do you want to delete the stored issues of %1 repository(ies)?</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of repositories</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Delete GHP - NamedType DeleteIssuesQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1042727998 - NamedType 1003550005" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The issues of %1 repository(ies) were updated. %2 repository(ies) were skipped: %3 with Issue Sync set to Ignore, %4 with Issues Enabled set to No (Update Repositories refreshes this), %5 of an owner with Repository Sync set to Ignore.</source><target state="translated">The issues of %1 repository(ies) were updated. %2 repository(ies) were skipped: %3 with Issue Sync set to Ignore, %4 with Issues Enabled set to No (Update Repositories refreshes this), %5 of an owner with Repository Sync set to Ignore.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of updated repositories, %2 = number of skipped repositories, %3/%4/%5 = number skipped for each reason</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Eligibility GHP - NamedType IssuesUpdatedWithReasonsMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1917788639 - NamedType 1188114191" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1: GitHub rate limit reached; %3 owner(s) and %4 repository(ies) skipped. The limit resets at %2.</source><target state="translated">%1: GitHub rate limit reached; %3 owner(s) and %4 repository(ies) skipped. The limit resets at %2.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = date and time, %3 = number of owners, %4 = number of repositories</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Runs GHP - NamedType RateLimitLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1917788639 - NamedType 988941307" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) and the issues of %2 repository(ies) were updated. %3 owner(s) and %4 repository(ies) were skipped. Repositories skipped: %5 with Issue Sync set to Ignore, %6 with Issues Enabled set to No.</source><target state="translated">The repositories of %1 owner(s) and the issues of %2 repository(ies) were updated. %3 owner(s) and %4 repository(ies) were skipped. Repositories skipped: %5 with Issue Sync set to Ignore, %6 with Issues Enabled set to No.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of updated owners, %2 = number of updated repositories, %3 = number of skipped owners, %4 = number of skipped repositories, %5/%6 = number skipped for each reason</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Runs GHP - NamedType RepositoriesAndIssuesWithReasonsMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1917788639 - NamedType 3273565573" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2/%3: %4</source><target state="translated">%1 %2/%3: %4</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = owner, %3 = repository name, %4 = error</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Runs GHP - NamedType RepositoryFailedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1917788639 - NamedType 1334027089" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The request to %1 failed with status %2 %3.</source><target state="translated">The request to %1 failed with status %2 %3.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = HTTP status code, %3 = reason phrase</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Runs GHP - NamedType RequestFailedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1033841005 - NamedType 565235482" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The issues of %1 repository(ies) were updated. %2 repository(ies) were skipped.</source><target state="translated">The issues of %1 repository(ies) were updated. %2 repository(ies) were skipped.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of updated repositories, %2 = number of skipped repositories</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue UI GHP - NamedType IssuesUpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1642342794 - NamedType 3273565573" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2/%3: %4</source><target state="translated">%1 %2/%3: %4</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = owner, %3 = repository name, %4 = error</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Update GHP - NamedType RepositoryFailedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1642342794 - NamedType 1650806374" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub returned the unknown issue state %1.</source><target state="translated">GitHub returned the unknown issue state %1.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = state</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Issue Update GHP - NamedType UnknownStateErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1429812681 - NamedType 1919073245" size-unit="char" translate="yes" xml:space="preserve">
           <source>Owner %1 already exists for base URL %2.</source><target state="translated">Owner %1 already exists for base URL %2.</target>
           <note from="Developer" annotates="general" priority="2">%1 = owner name, %2 = base URL code</note>
@@ -74,8 +124,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType OwnerFailedLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 1994103968 - NamedType 1188114191" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1: GitHub rate limit reached; %3 owner(s) skipped. The limit resets at %2.</source><target state="translated">%1: GitHub rate limit reached; %3 owner(s) skipped. The limit resets at %2.</target>
-          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = date and time, %3 = number of owners</note>
+          <source>%1: GitHub rate limit reached; %3 owner(s) and %4 repository(ies) skipped. The limit resets at %2.</source><target state="translated">%1: GitHub rate limit reached; %3 owner(s) and %4 repository(ies) skipped. The limit resets at %2.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = date and time, %3 = number of owners, %4 = number of repositories</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType RateLimitLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 1994103968 - NamedType 1334027089" size-unit="char" translate="yes" xml:space="preserve">

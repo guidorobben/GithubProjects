@@ -9,7 +9,7 @@ codeunit 50010 "UT Update Errors GHP"
         LastMessage: Text;
         MoreFailuresLbl: Label '...and %1 more.', Comment = '%1 = number of further failures';
         OwnerFailedLbl: Label '%1 %2: %3', Comment = '%1 = base URL code, %2 = owner name, %3 = error';
-        RateLimitLbl: Label '%1: GitHub rate limit reached; %3 owner(s) skipped. The limit resets at %2.', Comment = '%1 = base URL code, %2 = date and time, %3 = number of owners';
+        RateLimitLbl: Label '%1: GitHub rate limit reached; %3 owner(s) and %4 repository(ies) skipped. The limit resets at %2.', Comment = '%1 = base URL code, %2 = date and time, %3 = number of owners, %4 = number of repositories';
         RequestFailedErr: Label 'The request to %1 failed with status %2 %3.', Comment = '%1 = URL, %2 = HTTP status code, %3 = reason phrase';
         UpdatedMsg: Label 'The repositories of %1 owner(s) were updated.', Comment = '%1 = number of owners';
         UpdatedWithIgnoredMsg: Label 'The repositories of %1 owner(s) were updated. %2 owner(s) set to Ignore were skipped.', Comment = '%1 = number of updated owners, %2 = number of ignored owners';
@@ -77,7 +77,7 @@ codeunit 50010 "UT Update Errors GHP"
         asserterror Owner.UpdateRepositories();
 
         // [THEN] No request for USR; 103 exists; one rate-limit line for GH1 with 1 skipped owner
-        Assert.ExpectedError(StrSubstNo(RateLimitLbl, BaseURL.Code, Format(TypeHelper.EvaluateUnixTimestamp(ResetEpoch)), 1));
+        Assert.ExpectedError(StrSubstNo(RateLimitLbl, BaseURL.Code, Format(TypeHelper.EvaluateUnixTimestamp(ResetEpoch)), 1, 0));
         Assert.AreEqual(2, MockHttpHandlerGHP.GetRequestCount(), UnexpectedRequestCountTok);
         Repository.SetLoadFields(Id);
         Assert.IsTrue(Repository.Get(OtherBaseURL.Code, '103'), RepositoryMustExistTok);
@@ -283,7 +283,7 @@ codeunit 50010 "UT Update Errors GHP"
     var
         RateLimitLine: Text;
     begin
-        RateLimitLine := StrSubstNo(RateLimitLbl, BaseUrlCode, '#', SkippedOwners);
+        RateLimitLine := StrSubstNo(RateLimitLbl, BaseUrlCode, '#', SkippedOwners, 0);
         exit(CopyStr(RateLimitLine, 1, StrPos(RateLimitLine, '#') - 1));
     end;
 

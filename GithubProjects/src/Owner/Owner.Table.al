@@ -92,4 +92,12 @@ table 80001 "Owner GHP"
     begin
         OwnerHelper.UpdateRepositories(Rec);
     end;
+
+    /// <summary>
+    /// Retrieves the repositories of all owners in the current filter, then the issues of their eligible repositories.
+    /// </summary>
+    procedure UpdateRepositoriesAndIssues()
+    begin
+        OwnerHelper.UpdateRepositoriesAndIssues(Rec);
+    end;
 }

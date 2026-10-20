@@ -22,7 +22,7 @@ Defines done for [requirements.md](requirements.md).
 | # | Given | When | Then |
 | --- | --- | --- | --- |
 | A1 | No base URL with code `A1` | A record with Code `A1` and URL `https://a1.invalid` is inserted with triggers, Source Type not set | It exists with Source Type `GitHub` (R1.1, R1.2) |
-| A2 | A new record | URL is validated with `  https://api.github.com//  ` | URL = `https://api.github.com` (R1.4) |
+| A2 | A new record | URL is validated with `  https://normalise.invalid//  ` | URL = `https://normalise.invalid` (R1.4; an `.invalid` address so real base URLs in the company cannot collide, changed 2026-10-20) |
 | A3 | A new record with a blank URL | It is inserted with triggers | A TestField error on URL; the record does not exist (R1.3) |
 | A4 | A new record | URL is validated with `http://api.github.com` | Error `UrlMustBeHttpsErr` with that URL (R1.5) |
 | A4a | A new record | URL is validated with `HTTPS://Upper.invalid` | No error; the value is kept (R1.5) |

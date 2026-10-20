@@ -48,6 +48,19 @@ table 80002 "Repository GHP"
             InitValue = Include;
             ToolTip = 'Specifies whether issues are retrieved for the repository. Retrieving repositories again does not change this choice.';
         }
+        field(8; "No. of Issues"; Integer)
+        {
+            CalcFormula = count("Issue GHP" where("Base URL Code" = field("Base URL Code"), "Repository Id" = field(Id)));
+            Caption = 'No. of Issues';
+            Editable = false;
+            FieldClass = FlowField;
+            ToolTip = 'Specifies how many issues of the repository are stored.';
+        }
+        field(9; Fork; Boolean)
+        {
+            Caption = 'Fork';
+            ToolTip = 'Specifies whether the repository is a fork of another repository in GitHub. A fork that is retrieved for the first time gets Issue Sync set to Ignore.';
+        }
     }
 
     keys
@@ -60,4 +73,28 @@ table 80002 "Repository GHP"
         {
         }
     }
+
+    trigger OnDelete()
+    begin
+        RepositoryHelper.DeleteIssues(Rec);
+    end;
+
+    var
+        RepositoryHelper: Codeunit "Repository Helper GHP";
+
+    /// <summary>
+    /// Retrieves the issues of all repositories in the current filter from GitHub. Repositories that are not eligible are skipped.
+    /// </summary>
+    procedure UpdateIssues()
+    begin
+        RepositoryHelper.UpdateIssues(Rec);
+    end;
+
+    /// <summary>
+    /// Asks for confirmation and deletes the stored issues of all repositories in the current filter.
+    /// </summary>
+    procedure DeleteIssuesWithConfirmation()
+    begin
+        RepositoryHelper.DeleteIssuesWithConfirmation(Rec);
+    end;
 }

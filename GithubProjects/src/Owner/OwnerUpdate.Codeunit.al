@@ -77,21 +77,24 @@ codeunit 80003 "Owner Update GHP"
         RepositoryId: Code[50];
         RepositoryName: Text[100];
         IssuesEnabled: Boolean;
+        IsFork: Boolean;
     begin
         foreach RepositoryToken in Repositories do begin
             RepositoryObject := RepositoryToken.AsObject();
             RepositoryId := CopyStr(Format(GetValue(RepositoryObject, 'id').AsBigInteger(), 0, 9), 1, MaxStrLen(RepositoryId));
             RepositoryName := CopyStr(GetValue(RepositoryObject, 'name').AsText(), 1, MaxStrLen(RepositoryName));
             IssuesEnabled := GetIssuesEnabled(RepositoryObject);
+            IsFork := GetFork(RepositoryObject);
             if not SeenIds.ContainsKey(RepositoryId) then
                 SeenIds.Add(RepositoryId, true);
 
             if Repository.Get(Owner."Base URL Code", RepositoryId) then begin
                 // Issue Sync is the user's choice and is never changed by an update.
-                if (Repository.Owner <> Owner.Name) or (Repository.Name <> RepositoryName) or (Repository."Issues Enabled" <> IssuesEnabled) then begin
+                if (Repository.Owner <> Owner.Name) or (Repository.Name <> RepositoryName) or (Repository."Issues Enabled" <> IssuesEnabled) or (Repository.Fork <> IsFork) then begin
                     Repository.Owner := Owner.Name;
                     Repository.Name := RepositoryName;
                     Repository."Issues Enabled" := IssuesEnabled;
+                    Repository.Fork := IsFork;
                     Repository.Modify(true);
                 end;
             end else begin
@@ -102,6 +105,10 @@ codeunit 80003 "Owner Update GHP"
                 Repository.Owner := Owner.Name;
                 Repository.Name := RepositoryName;
                 Repository."Issues Enabled" := IssuesEnabled;
+                Repository.Fork := IsFork;
+                // A fork starts as Ignore; the user can include it afterwards.
+                if IsFork then
+                    Repository."Issue Sync" := Repository."Issue Sync"::Ignore;
                 Repository.Insert(true);
             end;
         end;
@@ -144,6 +151,17 @@ codeunit 80003 "Owner Update GHP"
             exit(true);
         if PropertyToken.AsValue().IsNull() then
             exit(true);
+        exit(PropertyToken.AsValue().AsBoolean());
+    end;
+
+    local procedure GetFork(var RepositoryObject: JsonObject): Boolean
+    var
+        PropertyToken: JsonToken;
+    begin
+        if not RepositoryObject.Get('fork', PropertyToken) then
+            exit(false);
+        if PropertyToken.AsValue().IsNull() then
+            exit(false);
         exit(PropertyToken.AsValue().AsBoolean());
     end;
 }

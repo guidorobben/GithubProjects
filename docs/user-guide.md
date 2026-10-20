@@ -2,18 +2,19 @@
 
 ## About this extension
 
-GithubProjects brings repositories and issues from GitHub, and user stories and tasks from Azure DevOps, into Business Central. This guide covers what is available so far: registering the GitHub and Azure DevOps addresses (base URLs) the extension connects to, each with its own personal access token, and retrieving the repositories of GitHub users and organizations. Retrieving issues, Azure DevOps projects and work items follows in later versions.
+GithubProjects brings repositories and issues from GitHub, and user stories and tasks from Azure DevOps, into Business Central. This guide covers what is available so far: registering the GitHub and Azure DevOps addresses (base URLs) the extension connects to, each with its own personal access token, retrieving the repositories of GitHub users and organizations, and retrieving the issues of those repositories. Azure DevOps projects and work items follow in later versions.
 
 ## Table of contents
 
 - [Base URLs and tokens](#base-urls-and-tokens)
 - [GitHub owners and repositories](#github-owners-and-repositories)
+- [GitHub issues](#github-issues)
 
 ## Base URLs and tokens
 
 ### What this feature does
 
-On the **Base URLs** page you register every GitHub or Azure DevOps address that GithubProjects connects to, for example `https://api.github.com` for github.com or `https://dev.azure.com/{organization}` for an Azure DevOps organization. Each base URL has a **Code**, a **URL** and a **Source Type** (**GitHub** or **Azure DevOps**), and its own personal access token. The token is stored securely and can never be read back on any page: the list only shows whether a token is set. Tokens are kept per company. For GitHub, the base URL is the address of the API, not of the website: use `https://api.github.com`, not `https://github.com`. Repositories are retrieved for GitHub base URLs (see [GitHub owners and repositories](#github-owners-and-repositories)); Azure DevOps base URLs can be registered, but nothing is retrieved from Azure DevOps yet.
+On the **Base URLs** page you register every GitHub or Azure DevOps address that GithubProjects connects to, for example `https://api.github.com` for github.com or `https://dev.azure.com/{organization}` for an Azure DevOps organization. Each base URL has a **Code**, a **URL** and a **Source Type** (**GitHub** or **Azure DevOps**), and its own personal access token. The token is stored securely and can never be read back on any page: the list only shows whether a token is set. Tokens are kept per company. For GitHub, the base URL is the address of the API, not of the website: use `https://api.github.com`, not `https://github.com`. Repositories and issues are retrieved for GitHub base URLs (see [GitHub owners and repositories](#github-owners-and-repositories) and [GitHub issues](#github-issues)); Azure DevOps base URLs can be registered, but nothing is retrieved from Azure DevOps yet.
 
 ### Setup
 
@@ -21,7 +22,7 @@ On the **Base URLs** page you register every GitHub or Azure DevOps address that
 
 GithubProjects has two permission sets:
 - **GitHub Projects - Admin** (**PROJECTS ADMIN GHP**): create, change and delete base URLs and owners, and set and clear tokens. It includes the User permission set, so an admin does not need both.
-- **GitHub Projects - User** (**PROJECTS USER GHP**): open the **Base URLs**, **Owners** and **Repositories** pages, see whether a token is set, run **Update Repositories**, change **Issue Sync** on a repository, and delete repositories. A user with only this permission set cannot change base URLs or owners; **Set Token** and **Clear Token** are refused with "You do not have permission to change the token of base URL …".
+- **GitHub Projects - User** (**PROJECTS USER GHP**): open the **Base URLs**, **Owners** and **Repositories** pages, see whether a token is set, run **Update Repositories**, **Update Issues** and **Update Repositories and Issues**, change **Issue Sync** on a repository, delete repositories, open the **Issues** page, and delete stored issues. A user with only this permission set cannot change base URLs or owners; **Set Token** and **Clear Token** are refused with "You do not have permission to change the token of base URL …".
 
 These permission sets only cover GithubProjects. Users also need their usual Business Central permissions to sign in and work in the client. Assigning permission sets is done by someone with permission to manage users:
 
@@ -38,6 +39,7 @@ These permission sets only cover GithubProjects. Users also need their usual Bus
 
 Rules for the **URL**:
 - It must start with `https://` (capitals are also accepted). Any other address is refused with the message "The URL … must start with https://.".
+- It cannot be the GitHub website: `https://github.com` and `https://www.github.com`, also followed by a path such as `https://github.com/microsoft`, are refused with the message "The URL … is the GitHub website. For github.com, use https://api.github.com.".
 - Spaces at the start and end, and any slashes at the end, are removed when you enter the URL. `https://api.github.com/` is saved as `https://api.github.com`.
 - Each URL can be used once. The same URL with different capitals or a trailing slash counts as the same URL; it is refused with the message "The URL … is already used by base URL …".
 - A line cannot be saved without a URL: Business Central shows a message that **URL** must have a value.
@@ -45,7 +47,7 @@ Rules for the **URL**:
 Good to know:
 - You can save a base URL without a token. A GitHub base URL without a token only returns public repositories, and GitHub allows only 60 requests per hour without a token. Once Azure DevOps is supported, an Azure DevOps base URL will need a token.
 - Changing the **URL** or renaming the **Code** keeps the token.
-- Deleting a base URL also deletes its token, its owners and their repositories.
+- Deleting a base URL also deletes its token, its owners, their repositories and the stored issues of those repositories.
 - The **Source Type** cannot be changed once the base URL has owners: "You cannot change the Source Type of base URL … because it has owners.".
 
 ### How to use
@@ -87,7 +89,7 @@ For a GitHub base URL you list the GitHub users and organizations (owners) whose
 - **User** for any other account: only public repositories.
 - **Organization**: the public repositories, plus the private ones the token can access.
 
-Owners only exist for GitHub base URLs. Issues are not retrieved yet; **Issue Sync** and **Issues Enabled** prepare for that.
+Owners only exist for GitHub base URLs. To retrieve the issues of the repositories too, see [GitHub issues](#github-issues).
 
 ### Setup
 
@@ -107,7 +109,7 @@ Rules for owners:
 
 Good to know:
 - Choose **Owner Type** carefully. A user set to **Organization** fails with status 404 Not Found when you update it. An organization left on **User** gives no error, but only its public repositories are retrieved.
-- Deleting an owner also deletes its stored repositories.
+- Deleting an owner also deletes its stored repositories and their stored issues.
 - **Repository Sync** = **Ignore** makes **Update Repositories** skip the owner. Its stored repositories are kept as they are.
 - Set a token on the base URL for regular use. Each owner needs one request to GitHub per 50 repositories, and without a token GitHub accepts only 60 requests per hour.
 - In a sandbox, Business Central blocks requests to GitHub until you allow them for this extension. Someone with permission to manage extensions does this: search for **Extension Management**, select **GitHub Projects**, choose **View**, and turn on **Allow HttpClient Requests** in **Extension Settings**.
@@ -125,21 +127,98 @@ Good to know:
 Each owner is updated on its own, and all selected owners are processed before any error is shown:
 - If GitHub refuses a request for an owner, nothing of that owner is changed, and the other owners are still updated. Typical causes: a wrong **Name** or **Owner Type** (status 404 Not Found), or an expired or invalid token (status 401; then every owner of that base URL fails, its repositories are kept, and you set a new token on the **Base URLs** page).
 - If GitHub's rate limit is reached (the maximum number of requests GitHub accepts per hour), the owner that reached it and the remaining owners of that base URL are not updated in this run. Owners of other base URLs are still updated.
-- At the end, an error lists what failed instead of the success message: "The repositories of … owner(s) could not be updated:", followed by at most 10 lines and "...and … more." when there are more. The number includes the owners skipped because of the rate limit. A line looks like this:
+- At the end, an error lists what failed instead of the success message: "The update failed for … owner(s) or repository(ies):", followed by at most 10 lines and "...and … more." when there are more. The number includes the owners skipped because of the rate limit. A line looks like this:
   - `GITHUB microsoft: The request to https://api.github.com/orgs/microsoft/repos?per_page=50 failed with status 404 Not Found.`
-  - `GITHUB: GitHub rate limit reached; 2 owner(s) skipped. The limit resets at …`
+  - `GITHUB: GitHub rate limit reached; 2 owner(s) and 0 repository(ies) skipped. The limit resets at ….`
 - All owners that were updated successfully keep their changes, even though an error is shown at the end. Refresh the page (F5) to see the current **No. of Repositories**.
 
 **View the repositories**
 
 1. On the **Owners** page, select an owner and choose **Repositories**. The **Repositories** page opens with that owner's repositories.
-2. The list shows **Source Type**, **Name**, **Issues Enabled** and **Issue Sync**. **Base URL Code** and **Owner** are hidden; add them through personalization if you need them. When you open **Repositories** through search, it shows the repositories of all owners, sorted by base URL, owner and name, so show **Owner** to tell them apart.
+2. The list shows **Source Type**, **Name**, **Fork**, **Issues Enabled**, **Issue Sync** and **No. of Issues**. **Base URL Code** and **Owner** are hidden; add them through personalization if you need them. When you open **Repositories** through search, it shows the repositories of all owners, sorted by base URL, owner and name, so show **Owner** to tell them apart.
 
 - **Issues Enabled** shows whether issues are turned on for the repository in GitHub. It does not say whether the repository has issues.
-- **Issue Sync** (**Include** or **Ignore**) is your choice for retrieving issues later. A new repository gets **Include**, and **Update Repositories** never changes it. It has no effect yet.
-- You cannot add repositories yourself; **Update Repositories** maintains the list. You can delete a repository line, but it comes back the next time its owner is updated, with **Issue Sync** **Include**. To stop updating an owner's repositories altogether, set the owner's **Repository Sync** to **Ignore**.
+- **Fork** shows whether the repository is a fork of another repository in GitHub.
+- **Issue Sync** (**Include** or **Ignore**) is your choice whether its issues are retrieved (see [GitHub issues](#github-issues)). A new repository gets **Include**, or **Ignore** when it is a fork. After that, **Update Repositories** never changes it: a repository that was already on the list keeps its **Issue Sync**, also when it turns out to be a fork.
+- You cannot add repositories yourself; **Update Repositories** maintains the list. You can delete a repository line; its stored issues are deleted with it. It comes back the next time its owner is updated, as a new repository (**Issue Sync** **Include**, or **Ignore** for a fork). To stop updating an owner's repositories altogether, set the owner's **Repository Sync** to **Ignore**.
 
 Good to know:
 - **Private repositories:** when the token is removed or replaced by a token of another account, the private repositories of the old account are no longer returned and are deleted at the next update.
-- **Moved repositories:** when a repository moves to another owner that is also on the **Owners** list of the same base URL, it moves to that owner at the next update and keeps its **Issue Sync**, unless the old owner is updated first in the same run: then it is deleted there and added again with **Issue Sync** **Include**. When the new owner is not on the list, the repository is deleted at the old owner's next update.
-- Repositories are only updated when you choose **Update Repositories**.
+- **Moved repositories:** when a repository moves to another owner that is also on the **Owners** list of the same base URL, it moves to that owner at the next update and keeps its **Issue Sync**, unless the old owner is updated first in the same run: then it is deleted there, together with its stored issues, and added again as a new repository. When the new owner is not on the list, the repository is deleted at the old owner's next update.
+- Repositories are only updated when you choose **Update Repositories** or **Update Repositories and Issues**.
+
+## GitHub issues
+
+### What this feature does
+
+GithubProjects retrieves the issues of your GitHub repositories, open and closed, and shows them on the **Issues** page. Each issue shows its repository, its number (as in #123), its title as **Description**, and its **State** (**Open** or **Closed**). Pull requests are not stored, although GitHub lists them together with the issues. Titles longer than 256 characters are cut off after 256 characters. An update keeps the stored issues of a repository in line with GitHub: new issues are added, changed titles and states are updated, and issues that GitHub no longer returns for the repository are deleted.
+
+You choose per repository whether its issues are retrieved, with **Issue Sync** on the **Repositories** page. Issues are only retrieved when you choose **Update Issues** or **Update Repositories and Issues**; they are not updated automatically.
+
+### Setup
+
+There is nothing extra to set up. You need the base URLs and owners from the earlier sections, and the repositories must have been retrieved at least once with **Update Repositories** or **Update Repositories and Issues**. Both permission sets can retrieve, view and delete issues.
+
+Check **Issue Sync** on the **Repositories** page before the first update. A repository's issues are only retrieved when all of these are true:
+- **Issue Sync** is **Include**. New repositories get **Include**, except forks, which get **Ignore**. You can change it at any time on the **Repositories** page.
+- **Issues Enabled** is **Yes**, which means issues are turned on for the repository in GitHub. **Update Repositories** refreshes this value from GitHub.
+- The owner's **Repository Sync** on the **Owners** page is **Include**.
+
+### How to use
+
+**Retrieve the issues of repositories**
+
+1. Choose the search icon, enter **Repositories**, and choose the related link, or choose **Repositories** on the **Owners** page.
+2. Select the repositories you want to update. You can select several lines. If you do not select lines, only the current line is updated.
+3. Choose **Update Issues**.
+4. A message says how many repositories had their issues updated and how many were skipped, for example "The issues of 3 repository(ies) were updated. 2 repository(ies) were skipped: 1 with Issue Sync set to Ignore, 1 with Issues Enabled set to No (Update Repositories refreshes this), 0 of an owner with Repository Sync set to Ignore.". When no repository is skipped, the message ends after "0 repository(ies) were skipped.".
+5. **No. of Issues** on each repository shows the number of stored issues.
+
+A selected repository is skipped, without a request to GitHub and without changing its stored issues, in this order:
+- when **Issue Sync** is **Ignore**;
+- when **Issues Enabled** is **No**;
+- when the owner's **Repository Sync** is **Ignore**.
+
+A skipped repository is counted once, under the first reason that applies. Being skipped is not an error.
+
+**Retrieve the repositories and issues of owners in one go**
+
+1. On the **Owners** page, select the owners you want to update.
+2. Choose **Update Repositories and Issues**.
+3. For each owner, the repositories are updated first, as with **Update Repositories**. Then the issues of that owner's repositories are retrieved, with the same rules as **Update Issues**. When the repositories of an owner cannot be updated, the issues of that owner are not retrieved either.
+4. A message says how many owners and repositories were updated and skipped, for example "The repositories of 2 owner(s) and the issues of 5 repository(ies) were updated. 0 owner(s) and 1 repository(ies) were skipped. Repositories skipped: 1 with Issue Sync set to Ignore, 0 with Issues Enabled set to No.". When no repository is skipped, the message ends after "… repository(ies) were skipped.". The skipped owners are the owners with **Repository Sync** = **Ignore**; owners that could not be updated are listed in an error instead (see below).
+
+Owners with **Repository Sync** = **Ignore** are skipped completely: neither their repositories nor their issues are updated.
+
+**When something goes wrong**
+
+Each repository is updated on its own, and all selected repositories are processed before any error is shown:
+- If GitHub refuses the request for a repository, the stored issues of that repository stay as they were, and the other repositories are still updated.
+- If GitHub's rate limit is reached, the remaining owners and repositories of that base URL are not updated in this run. Other base URLs are still updated.
+- At the end, an error lists what failed instead of the success message: "The update failed for … owner(s) or repository(ies):", followed by at most 10 lines and "...and … more." when there are more. The number includes the repositories skipped because of the rate limit. A line looks like this:
+  - when the first request for a repository fails: `GITHUB microsoft/vscode: The request to https://api.github.com/repos/microsoft/vscode/issues?state=all&per_page=50 failed with status 404 Not Found.`
+  - when the rate limit is reached: `GITHUB: GitHub rate limit reached; 0 owner(s) and 3 repository(ies) skipped. The limit resets at ….`
+- Repositories that were updated successfully keep their changes, even though an error is shown at the end. Refresh the page (F5) to see the current **No. of Issues**.
+
+**View issues**
+
+1. On the **Repositories** page, select a repository and choose **Issues**. The **Issues** page opens with the issues of that repository.
+2. The list shows **Repository Name**, **Number**, **Description**, **State** and **Type**. For GitHub, **Type** is always **Issue**. The list is read-only: issues are maintained in GitHub and brought in by the updates.
+
+When you open **Issues** through search, it shows the issues of all repositories, one repository after another, and within a repository sorted by **Number**. The repositories are in the order of their GitHub id, not of their name; **Repository Name** shows which repository an issue belongs to.
+
+**Delete stored issues**
+
+1. On the **Repositories** page, select the repositories whose issues you want to delete. You can select several lines. If you do not select lines, only the current line is used.
+2. Choose **Delete Issues**.
+3. Answer **Yes** to "Do you want to delete the stored issues of … repository(ies)?". The default answer is **No**; if you answer **No**, nothing is deleted.
+4. No message is shown. **No. of Issues** on the selected repositories changes to 0.
+
+Only the issues stored in Business Central are deleted; nothing is changed in GitHub. The repositories stay on the list, and the next **Update Issues** retrieves their issues again. To stop that, set **Issue Sync** to **Ignore**.
+
+Good to know:
+- **Ignore keeps the issues:** setting **Issue Sync** to **Ignore** stops future updates of the repository's issues, but keeps the issues that are already stored. Use **Delete Issues** to remove them.
+- **Forks:** a fork gets **Issue Sync** = **Ignore** when it is added to the list, so its issues are not retrieved unless you set it to **Include**. GitHub also turns off issues for new forks by default; such forks show **Issues Enabled** = **No** and are skipped anyway.
+- **Renamed repositories:** after renaming a repository in GitHub, choose **Update Repositories** on its owner before you update its issues, so the new name is used.
+- **Number of requests:** each repository needs at least one request to GitHub per 50 issues and pull requests. Without a token, GitHub accepts only 60 requests per hour, so set a token on the base URL.
+- **Sandbox:** requests to GitHub must be allowed for this extension, as described in [GitHub owners and repositories](#github-owners-and-repositories).
