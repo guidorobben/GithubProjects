@@ -19,7 +19,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3566854179 - Field 1753214751 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies whether the base URL belongs to GitHub or to Azure DevOps. It decides which API is called and how the token is sent.</source>
+          <source>Specifies whether the base URL belongs to GitHub or to Azure DevOps. It decides which API is called and how the token is sent. It cannot be changed once the base URL has owners.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field Source Type - Property ToolTip</note>
         </trans-unit>
@@ -37,6 +37,136 @@
           <source>URL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Base URL GHP - Field URL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 2862434421 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the GitHub base URL the owner belongs to.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Base URL Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 2862434421 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base URL Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Base URL Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the GitHub user or organization, as in https://github.com/{name}. Only letters, digits, hyphens and underscores are allowed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 1196016470 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many repositories of the owner are stored.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field No. of Repositories - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 1196016470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Repositories</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field No. of Repositories - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 4004434203 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the owner is a GitHub user or a GitHub organization. It decides which repositories are retrieved.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Owner Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 4004434203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Owner Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 2389745119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the repositories of the owner are retrieved. An owner set to Ignore is skipped by Update Repositories; its stored repositories are kept.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Repository Sync - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1549393410 - Field 2389745119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repository Sync</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Owner GHP - Field Repository Sync - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repository</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2862434421 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the base URL the repository was retrieved from.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Base URL Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2862434421 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base URL Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Base URL Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 415504711 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the id of the repository in GitHub.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Id - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2303690330 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether issues are retrieved for the repository. Retrieving repositories again does not change this choice.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Issue Sync - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2303690330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issue Sync</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Issue Sync - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2542784609 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether issues are turned on for the repository in GitHub.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Issues Enabled - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2542784609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issues Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Issues Enabled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the repository.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 3552983923 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the GitHub user or organization the repository was retrieved for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Owner - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 3552983923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Owner - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 1753214751 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the repository comes from GitHub or Azure DevOps.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Source Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 1653427271 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Repository GHP - Field Source Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 3678296145 - NamedType 1668535664" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to clear the token of base URL %1?</source>
@@ -58,10 +188,75 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType SaveBaseUrlFirstErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3678296145 - NamedType 2389496784" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot change the Source Type of base URL %1 because it has owners.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType SourceTypeInUseErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3678296145 - NamedType 411220975" size-unit="char" translate="yes" xml:space="preserve">
           <source>The URL %1 must start with https://.</source>
           <note from="Developer" annotates="general" priority="2">%1 = URL</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Base URL Helper GHP - NamedType UrlMustBeHttpsErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 340884749 - NamedType 874185374" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub rate limit reached for base URL %1. The limit resets at %2.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = date and time</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GitHub Client GHP - NamedType RateLimitErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 340884749 - NamedType 1334027089" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The request to %1 failed with status %2 %3.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = HTTP status code, %3 = reason phrase</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit GitHub Client GHP - NamedType RequestFailedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 1919073245" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner %1 already exists for base URL %2.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = owner name, %2 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType DuplicateOwnerErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 77086134" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The owner name %1 can only contain letters, digits, hyphens (-) and underscores (_).</source>
+          <note from="Developer" annotates="general" priority="2">%1 = owner name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType InvalidOwnerNameErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 375293352" size-unit="char" translate="yes" xml:space="preserve">
+          <source>...and %1 more.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of further failures</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType MoreFailuresLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 508196372" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2: %3</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = owner name, %3 = error</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType OwnerFailedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 386287852" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owners can only be added to a base URL with Source Type GitHub. Base URL %1 is not a GitHub base URL.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType OwnerNeedsGitHubErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 1262339440" size-unit="char" translate="yes" xml:space="preserve">
+          <source>An owner cannot be renamed. Delete the owner and create a new one.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType OwnerRenameErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 1188114191" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1: GitHub rate limit reached; %3 owner(s) skipped. The limit resets at %2.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = date and time, %3 = number of owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType RateLimitLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 2065106392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) were updated.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType UpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 315003030" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) were updated. %2 owner(s) set to Ignore were skipped.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of updated owners, %2 = number of ignored owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType UpdatedWithIgnoredMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1249317324 - NamedType 4135973753" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) could not be updated:\%2</source>
+          <note from="Developer" annotates="general" priority="2">%1 = number of failed owners, %2 = list of failures</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Owner Helper GHP - NamedType UpdateFailedErr</note>
         </trans-unit>
         <trans-unit id="Page 4185532998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Base URLs</source>
@@ -74,7 +269,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Property AdditionalSearchTerms</note>
         </trans-unit>
         <trans-unit id="Page 4185532998 - Control 1605921075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies whether a token is set for the base URL. The token itself is never shown. Without a token, a GitHub base URL only returns public data and is limited to 60 requests per hour. An Azure DevOps base URL requires a token.</source>
+          <source>Specifies whether a token is set. The token is never shown. Without a token, GitHub returns only public data (60 requests per hour); Azure DevOps requires a token.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Control TokenSet - Property ToolTip</note>
         </trans-unit>
@@ -82,6 +277,16 @@
           <source>Token Set</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Control TokenSet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 3564997598 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or add the GitHub users and organizations whose repositories are retrieved for this base URL.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action Owners - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4185532998 - Action 3564997598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owners</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action Owners - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4185532998 - Action 1179226886 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete the token of the selected base URL.</source>
@@ -107,6 +312,96 @@
           <source>Process</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Base URLs GHP - Action Category_Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owners</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub Projects, GitHub owners, organizations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Action 1714138256 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the stored repositories of the owner.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Action Repositories - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Action 1714138256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repositories</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Action Repositories - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Action 2874409519 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retrieve the repositories of the selected owners from GitHub. New repositories are added, changed ones are updated and repositories that GitHub no longer returns are deleted.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Action UpdateRepositories - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Action 2874409519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Repositories</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Action UpdateRepositories - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1852954311 - Action 3383493608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Process</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Owners GHP - Action Category_Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3390605141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repositories</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Repositories GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3390605141 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GitHub Projects, GitHub repositories</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Repositories GHP - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Enum 1445390347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issue Sync</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Issue Sync GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1445390347 - EnumValue 785863684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ignore</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Issue Sync GHP - EnumValue Ignore - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1445390347 - EnumValue 3349558288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Include</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Issue Sync GHP - EnumValue Include - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1288214707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner Sync</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Owner Sync GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1288214707 - EnumValue 785863684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ignore</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Owner Sync GHP - EnumValue Ignore - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1288214707 - EnumValue 3349558288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Include</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Owner Sync GHP - EnumValue Include - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1742433018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Owner Type GHP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1742433018 - EnumValue 42754125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Organization</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Owner Type GHP - EnumValue Organization - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1742433018 - EnumValue 1814464443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Owner Type GHP - EnumValue User - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3883573654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Type</source>

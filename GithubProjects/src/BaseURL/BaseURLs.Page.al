@@ -21,7 +21,7 @@ page 80000 "Base URLs GHP"
                 {
                     Caption = 'Token Set';
                     Editable = false;
-                    ToolTip = 'Specifies whether a token is set for the base URL. The token itself is never shown. Without a token, a GitHub base URL only returns public data and is limited to 60 requests per hour. An Azure DevOps base URL requires a token.';
+                    ToolTip = 'Specifies whether a token is set. The token is never shown. Without a token, GitHub returns only public data (60 requests per hour); Azure DevOps requires a token.';
                 }
             }
         }
@@ -56,6 +56,17 @@ page 80000 "Base URLs GHP"
                 end;
             }
         }
+        area(Navigation)
+        {
+            action(Owners)
+            {
+                Caption = 'Owners';
+                Image = Users;
+                RunObject = page "Owners GHP";
+                RunPageLink = "Base URL Code" = field(Code);
+                ToolTip = 'View or add the GitHub users and organizations whose repositories are retrieved for this base URL.';
+            }
+        }
         area(Promoted)
         {
             group(Category_Process)
@@ -64,6 +75,7 @@ page 80000 "Base URLs GHP"
 
                 actionref(SetToken_Promoted; SetToken) { }
                 actionref(ClearToken_Promoted; ClearToken) { }
+                actionref(Owners_Promoted; Owners) { }
             }
         }
     }
