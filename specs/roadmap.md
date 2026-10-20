@@ -23,9 +23,9 @@ Every feature follows the SDD loop (Spec → Implement → Validate → Docs →
 ## 3. GitHub issues
 
 - **Delivers:** the user sees the open and closed issues of the repositories they choose to include.
-- **Status:** planned
-- **How:** issues per included repository, skipping pull requests and repositories with issues turned off, stored in the shared issue list; the user's include/ignore choice survives every update and stored issues can be deleted on request; Issue Sync and Issues Enabled already exist on the repository table (feature 2), so this feature adds the repository helper (deleting a repository deletes its issues), Delete Issues and Update Repositories and Issues, and refuses a `github.com` base URL with a hint to `https://api.github.com` — [tech design §3](tech-design.md#3-repositories-and-projects), [§4](tech-design.md#4-github-issues), [§6](tech-design.md#6-the-shared-issue-table), decisions 6, 13, 14, 20.
-- **Done when:** no pull request is ever stored, ignored repositories are skipped but keep their issues, Delete Issues removes them after confirmation, deleting a repository deletes its issues, and a `github.com` base URL is refused with the API address as hint.
+- **Status:** done ([spec](2026-10-20-github-issues/requirements.md))
+- **How:** issues per included repository, skipping pull requests and repositories with issues turned off or of an owner set to Ignore, fetched completely before they are upserted and pruned in the shared issue list (all its fields, including those for Azure DevOps, exist now); one run codeunit drives owner and issue updates with one failure list, rate-limit state and a message that counts skips per reason; the user's include/ignore choice survives every update, forks are stored and start as Ignore, and stored issues can be deleted on request; deleting a repository deletes its issues; a `github.com` base URL is refused with a hint to `https://api.github.com` — [tech design §3](tech-design.md#3-repositories-and-projects), [§4](tech-design.md#4-github-issues), [§6](tech-design.md#6-the-shared-issue-table), [§7](tech-design.md#7-data-retrieval-with-the-rest-client), decisions 6, 13, 14, 20, 21, 23, 24.
+- **Done when:** no pull request is ever stored, ignored repositories are skipped but keep their issues, new forks start as Ignore, Delete Issues removes issues after confirmation, deleting a repository deletes its issues, and a `github.com` base URL is refused with the API address as hint.
 
 ## 4. Azure DevOps projects
 
