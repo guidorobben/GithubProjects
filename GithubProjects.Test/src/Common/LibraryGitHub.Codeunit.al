@@ -2,6 +2,7 @@ codeunit 50014 "Library - GitHub GHP"
 {
     Permissions =
         tabledata "Base URL GHP" = i,
+        tabledata "Issue GHP" = i,
         tabledata "Owner GHP" = i,
         tabledata "Repository GHP" = i;
 
@@ -9,7 +10,11 @@ codeunit 50014 "Library - GitHub GHP"
         Any: Codeunit Any;
         LibraryBaseURLGHP: Codeunit "Library - Base URL GHP";
         RepositoryJsonLbl: Label '{"id":%1,"name":"%2","has_issues":%3}', Locked = true, Comment = '%1 = id, %2 = name, %3 = true or false';
+        ForkJsonLbl: Label '{"id":%1,"name":"%2","has_issues":true,"fork":true}', Locked = true, Comment = '%1 = id, %2 = name';
         UserJsonLbl: Label '{"login":"%1"}', Locked = true, Comment = '%1 = login';
+        IssueJsonLbl: Label '{"id":%1,"number":%2,"title":"%3","state":"%4"}', Locked = true, Comment = '%1 = id, %2 = number, %3 = title, %4 = state';
+        PullRequestJsonLbl: Label '{"id":%1,"number":%2,"title":"A pull request","state":"open","pull_request":{"url":"https://example.invalid/pulls/%2"}}', Locked = true, Comment = '%1 = id, %2 = number';
+        IssuesUrlLbl: Label '%1/repos/%2/%3/issues?state=all&per_page=50', Locked = true, Comment = '%1 = base URL, %2 = owner, %3 = repository name';
 
     /// <summary>
     /// Creates a GitHub base URL on an unresolvable .invalid host, with or without a dummy token.
@@ -61,6 +66,11 @@ codeunit 50014 "Library - GitHub GHP"
         exit(StrSubstNo(RepositoryJsonLbl, RepositoryId, RepositoryName, Format(IssuesEnabled, 0, 9)));
     end;
 
+    procedure ForkJson(RepositoryId: Integer; RepositoryName: Text): Text
+    begin
+        exit(StrSubstNo(ForkJsonLbl, RepositoryId, RepositoryName));
+    end;
+
     procedure R1(): Text
     begin
         exit(RepositoryJson(101, 'repo-one', true));
@@ -109,5 +119,51 @@ codeunit 50014 "Library - GitHub GHP"
     procedure TokenUserUrl(var BaseURL: Record "Base URL GHP"): Text
     begin
         exit(BaseURL.URL + '/user');
+    end;
+
+    procedure CreateIssue(var Repository: Record "Repository GHP"; IssueId: BigInteger; IssueNumber: Integer; Title: Text[256]; IssueState: Enum "Issue State GHP")
+    var
+        Issue: Record "Issue GHP";
+    begin
+        Issue.Init();
+        Issue."Base URL Code" := Repository."Base URL Code";
+        Issue.Id := IssueId;
+        Issue."Source Type" := Issue."Source Type"::GitHub;
+        Issue."Repository Id" := Repository.Id;
+        Issue.Number := IssueNumber;
+        Issue.Type := Issue.Type::Issue;
+        Issue.Description := Title;
+        Issue.State := IssueState;
+        Issue.Insert(true);
+    end;
+
+    procedure IssueJson(IssueId: BigInteger; IssueNumber: Integer; Title: Text; IssueState: Text): Text
+    begin
+        exit(StrSubstNo(IssueJsonLbl, Format(IssueId, 0, 9), IssueNumber, Title, IssueState));
+    end;
+
+    procedure I1(): Text
+    begin
+        exit(IssueJson(9001, 1, 'First', 'open'));
+    end;
+
+    procedure I2(): Text
+    begin
+        exit(IssueJson(9002, 2, 'Second', 'closed'));
+    end;
+
+    procedure PullRequest(): Text
+    begin
+        exit(StrSubstNo(PullRequestJsonLbl, 9003, 3));
+    end;
+
+    procedure IssuesUrl(var BaseURL: Record "Base URL GHP"; OwnerName: Text; RepositoryName: Text): Text
+    begin
+        exit(StrSubstNo(IssuesUrlLbl, BaseURL.URL, OwnerName, RepositoryName));
+    end;
+
+    procedure Page(Item1: Text; Item2: Text; Item3: Text): Text
+    begin
+        exit('[' + Item1 + ',' + Item2 + ',' + Item3 + ']');
     end;
 }

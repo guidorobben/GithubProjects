@@ -48,10 +48,10 @@ codeunit 50000 "UT Base URL GHP"
         BaseURL.Init();
 
         // [WHEN] URL is validated with spaces and trailing slashes
-        BaseURL.Validate(URL, '  https://api.github.com//  ');
+        BaseURL.Validate(URL, '  https://normalise.invalid//  ');
 
         // [THEN] The normalised URL is stored
-        Assert.AreEqual('https://api.github.com', BaseURL.URL, UnexpectedUrlTok);
+        Assert.AreEqual('https://normalise.invalid', BaseURL.URL, UnexpectedUrlTok);
     end;
 
     [Test]

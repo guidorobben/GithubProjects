@@ -8,6 +8,9 @@ codeunit 80000 "Base URL Helper GHP"
     var
         ClearTokenQst: Label 'Do you want to clear the token of base URL %1?', Comment = '%1 = base URL code';
         DuplicateUrlErr: Label 'The URL %1 is already used by base URL %2.', Comment = '%1 = URL, %2 = base URL code';
+        GitHubWebsiteErr: Label 'The URL %1 is the GitHub website. For github.com, use https://api.github.com.', Comment = '%1 = URL';
+        GitHubWebsiteHostTok: Label 'github.com', Locked = true;
+        GitHubWebsiteWwwHostTok: Label 'www.github.com', Locked = true;
         HttpsPrefixTok: Label 'https://', Locked = true;
         NoTokenPermissionErr: Label 'You do not have permission to change the token of base URL %1.', Comment = '%1 = base URL code';
         SaveBaseUrlFirstErr: Label 'Save the base URL before you set its token.';
@@ -22,6 +25,7 @@ codeunit 80000 "Base URL Helper GHP"
             exit;
 
         CheckHttps(BaseURL);
+        CheckNotGitHubWebsite(BaseURL);
         CheckDuplicate(BaseURL);
     end;
 
@@ -29,6 +33,7 @@ codeunit 80000 "Base URL Helper GHP"
     begin
         BaseURL.TestField(URL);
         CheckHttps(BaseURL);
+        CheckNotGitHubWebsite(BaseURL);
         CheckDuplicate(BaseURL);
     end;
 
@@ -146,6 +151,18 @@ codeunit 80000 "Base URL Helper GHP"
     begin
         if not LowerCase(BaseURL.URL).StartsWith(HttpsPrefixTok) then
             Error(UrlMustBeHttpsErr, BaseURL.URL);
+    end;
+
+    local procedure CheckNotGitHubWebsite(var BaseURL: Record "Base URL GHP")
+    var
+        Host: Text;
+    begin
+        // The website address of github.com returns 404 for every API request; the API lives on api.github.com.
+        Host := CopyStr(LowerCase(BaseURL.URL), StrLen(HttpsPrefixTok) + 1);
+        if Host.Contains('/') then
+            Host := CopyStr(Host, 1, Host.IndexOf('/') - 1);
+        if (Host = GitHubWebsiteHostTok) or (Host = GitHubWebsiteWwwHostTok) then
+            Error(GitHubWebsiteErr, BaseURL.URL);
     end;
 
     local procedure CheckDuplicate(var BaseURL: Record "Base URL GHP")

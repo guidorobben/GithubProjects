@@ -42,6 +42,21 @@ page 80001 "Owners GHP"
                     CurrPage.Update(false);
                 end;
             }
+            action(UpdateRepositoriesAndIssues)
+            {
+                Caption = 'Update Repositories and Issues';
+                Image = RefreshLines;
+                ToolTip = 'Retrieve the repositories of the selected owners from GitHub, then the issues of their repositories. Repositories set to Ignore, with issues turned off, or of an owner set to Ignore are skipped.';
+
+                trigger OnAction()
+                var
+                    Owner: Record "Owner GHP";
+                begin
+                    CurrPage.SetSelectionFilter(Owner);
+                    Owner.UpdateRepositoriesAndIssues();
+                    CurrPage.Update(false);
+                end;
+            }
         }
         area(Navigation)
         {
@@ -61,6 +76,7 @@ page 80001 "Owners GHP"
                 Caption = 'Process';
 
                 actionref(UpdateRepositories_Promoted; UpdateRepositories) { }
+                actionref(UpdateRepositoriesAndIssues_Promoted; UpdateRepositoriesAndIssues) { }
                 actionref(Repositories_Promoted; Repositories) { }
             }
         }
