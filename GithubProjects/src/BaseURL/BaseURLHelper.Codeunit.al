@@ -2,7 +2,8 @@ codeunit 80000 "Base URL Helper GHP"
 {
     Access = Internal;
     Permissions =
-        tabledata "Base URL GHP" = r;
+        tabledata "Base URL GHP" = r,
+        tabledata "Owner GHP" = rd;
 
     var
         ClearTokenQst: Label 'Do you want to clear the token of base URL %1?', Comment = '%1 = base URL code';
@@ -10,6 +11,7 @@ codeunit 80000 "Base URL Helper GHP"
         HttpsPrefixTok: Label 'https://', Locked = true;
         NoTokenPermissionErr: Label 'You do not have permission to change the token of base URL %1.', Comment = '%1 = base URL code';
         SaveBaseUrlFirstErr: Label 'Save the base URL before you set its token.';
+        SourceTypeInUseErr: Label 'You cannot change the Source Type of base URL %1 because it has owners.', Comment = '%1 = base URL code';
         TokenKeyLbl: Label 'GHP-Token-%1', Locked = true, Comment = '%1 = SystemId of the base URL';
         UrlMustBeHttpsErr: Label 'The URL %1 must start with https://.', Comment = '%1 = URL';
 
@@ -28,6 +30,39 @@ codeunit 80000 "Base URL Helper GHP"
         BaseURL.TestField(URL);
         CheckHttps(BaseURL);
         CheckDuplicate(BaseURL);
+    end;
+
+    procedure CheckSourceTypeChange(var BaseURL: Record "Base URL GHP"; var xBaseURL: Record "Base URL GHP")
+    begin
+        if BaseURL."Source Type" = xBaseURL."Source Type" then
+            exit;
+
+        if HasOwners(BaseURL) then
+            Error(SourceTypeInUseErr, BaseURL.Code);
+    end;
+
+    procedure CheckSourceTypeUnchanged(var BaseURL: Record "Base URL GHP")
+    var
+        SavedBaseURL: Record "Base URL GHP";
+    begin
+        // Compares with the stored record, so a change assigned without validation is refused as well.
+        SavedBaseURL.SetLoadFields("Source Type");
+        if not SavedBaseURL.GetBySystemId(BaseURL.SystemId) then
+            exit;
+
+        if SavedBaseURL."Source Type" = BaseURL."Source Type" then
+            exit;
+
+        if HasOwners(BaseURL) then
+            Error(SourceTypeInUseErr, BaseURL.Code);
+    end;
+
+    procedure DeleteOwners(var BaseURL: Record "Base URL GHP")
+    var
+        Owner: Record "Owner GHP";
+    begin
+        Owner.SetRange("Base URL Code", BaseURL.Code);
+        Owner.DeleteAll(true);
     end;
 
     procedure SetToken(var BaseURL: Record "Base URL GHP")
@@ -145,6 +180,14 @@ codeunit 80000 "Base URL Helper GHP"
         SavedBaseURL.SetLoadFields(Code);
         if not SavedBaseURL.GetBySystemId(BaseURL.SystemId) then
             Error(SaveBaseUrlFirstErr);
+    end;
+
+    local procedure HasOwners(var BaseURL: Record "Base URL GHP"): Boolean
+    var
+        Owner: Record "Owner GHP";
+    begin
+        Owner.SetRange("Base URL Code", BaseURL.Code);
+        exit(not Owner.IsEmpty());
     end;
 
     local procedure StoreToken(var BaseURL: Record "Base URL GHP"; Token: SecretText)

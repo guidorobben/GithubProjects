@@ -13,6 +13,11 @@
           <note from="Developer" annotates="general" priority="2">%1 = URL</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL GHP - NamedType UrlMustBeHttpsErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 447646382 - NamedType 2389496784" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot change the Source Type of base URL %1 because it has owners.</source><target state="translated">U kunt het brontype van basis-URL %1 niet wijzigen omdat deze eigenaren heeft.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL Owners GHP - NamedType SourceTypeInUseErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1265272608 - NamedType 1234059480" size-unit="char" translate="yes" xml:space="preserve">
           <source>You do not have permission to change the token of base URL %1.</source><target state="translated">U hebt geen machtiging om de token van basis-URL %1 te wijzigen.</target>
           <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
@@ -27,6 +32,66 @@
           <source>Save the base URL before you set its token.</source><target state="translated">Sla de basis-URL op voordat u de token instelt.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Base URL Token GHP - NamedType SaveBaseUrlFirstErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 351477715 - NamedType 1334027089" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The request to %1 failed with status %2 %3.</source><target state="translated">De aanvraag naar %1 is mislukt met status %2 %3.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = HTTP status code, %3 = reason phrase</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT GitHub Requests GHP - NamedType RequestFailedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1429812681 - NamedType 1919073245" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owner %1 already exists for base URL %2.</source><target state="translated">Eigenaar %1 bestaat al voor basis-URL %2.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = owner name, %2 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Owner GHP - NamedType DuplicateOwnerErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1429812681 - NamedType 77086134" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The owner name %1 can only contain letters, digits, hyphens (-) and underscores (_).</source><target state="translated">De eigenaarnaam %1 mag alleen letters, cijfers, koppeltekens (-) en onderstrepingstekens (_) bevatten.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = owner name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Owner GHP - NamedType InvalidOwnerNameErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1429812681 - NamedType 386287852" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Owners can only be added to a base URL with Source Type GitHub. Base URL %1 is not a GitHub base URL.</source><target state="translated">Eigenaren kunnen alleen worden toegevoegd aan een basis-URL met brontype GitHub. Basis-URL %1 is geen GitHub-basis-URL.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Owner GHP - NamedType OwnerNeedsGitHubErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1429812681 - NamedType 1262339440" size-unit="char" translate="yes" xml:space="preserve">
+          <source>An owner cannot be renamed. Delete the owner and create a new one.</source><target state="translated">Een eigenaar kan niet worden hernoemd. Verwijder de eigenaar en maak een nieuwe aan.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Owner GHP - NamedType OwnerRenameErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2350205004 - NamedType 2065106392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) were updated.</source><target state="translated">De repository's van %1 eigenaar/eigenaren zijn bijgewerkt.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Repository UI GHP - NamedType UpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1994103968 - NamedType 375293352" size-unit="char" translate="yes" xml:space="preserve">
+          <source>...and %1 more.</source><target state="translated">...en nog %1.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of further failures</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType MoreFailuresLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1994103968 - NamedType 508196372" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2: %3</source><target state="translated">%1 %2: %3</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = owner name, %3 = error</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType OwnerFailedLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1994103968 - NamedType 1188114191" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1: GitHub rate limit reached; %3 owner(s) skipped. The limit resets at %2.</source><target state="translated">%1: GitHub-aanvraaglimiet bereikt; %3 eigenaar/eigenaren overgeslagen. De limiet wordt opnieuw ingesteld om %2.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = base URL code, %2 = date and time, %3 = number of owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType RateLimitLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1994103968 - NamedType 1334027089" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The request to %1 failed with status %2 %3.</source><target state="translated">De aanvraag naar %1 is mislukt met status %2 %3.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = URL, %2 = HTTP status code, %3 = reason phrase</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType RequestFailedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1994103968 - NamedType 2065106392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) were updated.</source><target state="translated">De repository's van %1 eigenaar/eigenaren zijn bijgewerkt.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType UpdatedMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1994103968 - NamedType 315003030" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The repositories of %1 owner(s) were updated. %2 owner(s) set to Ignore were skipped.</source><target state="translated">De repository's van %1 eigenaar/eigenaren zijn bijgewerkt. %2 eigenaar/eigenaren die op Negeren staan, zijn overgeslagen.</target>
+          <note from="Developer" annotates="general" priority="2">%1 = number of updated owners, %2 = number of ignored owners</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit UT Update Errors GHP - NamedType UpdatedWithIgnoredMsg</note>
         </trans-unit>
         <trans-unit id="PermissionSet 1174803041 - Property 2879900210" maxwidth="30" size-unit="char" translate="yes" xml:space="preserve">
           <source>GitHub Projects - Test</source><target state="translated">GitHub Projects - Test</target>

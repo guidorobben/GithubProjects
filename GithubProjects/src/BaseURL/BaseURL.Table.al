@@ -1,5 +1,6 @@
 table 80000 "Base URL GHP"
 {
+    AllowInCustomizations = AsReadOnly;
     Caption = 'Base URL';
     DataClassification = CustomerContent;
     DrillDownPageId = "Base URLs GHP";
@@ -27,7 +28,12 @@ table 80000 "Base URL GHP"
         field(3; "Source Type"; Enum "Source Type GHP")
         {
             Caption = 'Source Type';
-            ToolTip = 'Specifies whether the base URL belongs to GitHub or to Azure DevOps. It decides which API is called and how the token is sent.';
+            ToolTip = 'Specifies whether the base URL belongs to GitHub or to Azure DevOps. It decides which API is called and how the token is sent. It cannot be changed once the base URL has owners.';
+
+            trigger OnValidate()
+            begin
+                BaseURLHelper.CheckSourceTypeChange(Rec, xRec);
+            end;
         }
     }
 
@@ -51,10 +57,12 @@ table 80000 "Base URL GHP"
     trigger OnModify()
     begin
         BaseURLHelper.CheckUrl(Rec);
+        BaseURLHelper.CheckSourceTypeUnchanged(Rec);
     end;
 
     trigger OnDelete()
     begin
+        BaseURLHelper.DeleteOwners(Rec);
         BaseURLHelper.DeleteToken(Rec);
     end;
 

@@ -5,5 +5,6 @@ permissionset 80001 "Projects Admin GHP"
     IncludedPermissionSets = "Projects User GHP";
 
     Permissions =
-        tabledata "Base URL GHP" = RIMD;
+        tabledata "Base URL GHP" = RIMD,
+        tabledata "Owner GHP" = RIMD;
 }
